@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		.panel{
+			background: pink;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div>组件的数据： {{temdata}}</div>
+		<panel :title="vmnum" @postdata="vmpost"></panel>
+	</div>
+	<template id="example">
+		<div>
+			<div @click='add' :class="{panel:isLike}">vm的数据：{{title}}</div>
+		</div>
+	</template>
+	<script src="vue.js"></script>
+	<script>
+		Vue.component('panel',{
+			data(){
+				return{
+					num:0,
+					isLike:false,
+				}
+			},
+			props:{
+				title:Number
+			},
+			template:'#example',
+			methods:{
+				add(){
+					if(!this.isLike){
+						this.num++
+					}else{
+						this.num--
+					};
+					this.isLike=!this.isLike;
+					this.$emit("postdata",this.num)
+				}
+			}
+		})
+		new Vue({
+			el:'#app',
+			data(){
+				return{
+					vmnum:123,
+					temdata:null
+				}
+			},
+			methods:{
+				vmpost(data){
+					this.temdata=data
+				}
+			}
+		})
+	</script>
+</body>
+</html>

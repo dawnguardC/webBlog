@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		选择性别：
+		<input type="radio" id="man" name="sex" value="男性" v-model="radio"><label for="man">男性</label>
+		<input type="radio" id="woman" name="sex" value="女性" v-model="radio"><label for="woman">女性</label>
+		<p>选择了：{{radio}}</p>
+		选择喜欢的颜色：
+		<input type="checkbox" name="black" id="black" v-model="checkbox" value="黑色"><label for="black">黑色</label>
+		<input type="checkbox" name="red" id="red" v-model="checkbox" value="红色"><label for="red">红色</label>
+		<input type="checkbox" name="pick" id="pick" v-model="checkbox" value="粉色"><label for="pick">粉色</label>
+		<input type="checkbox" name="blue" id="blue" v-model="checkbox" value="蓝色"><label for="blue">蓝色</label>
+		<p>选择了：{{checkbox}}</p>
+	</div>
+	<script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+    <script type="text/javascript">	
+    	var vm=new Vue({
+    		el:"#app",
+    		data:{
+    			radio:"",
+    			checkbox: []
+    		}
+    	})
+    </script>	
+</body>
+</html>

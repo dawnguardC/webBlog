@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>DOM</title>
+</head>
+<body>
+	<ul id="list">
+		<li>HTML</li>
+		<li>CSS</li>
+		<li>JS</li>
+	</ul>
+	输入代码类型：<input id="new" type="text">
+	<input type="button" value="点击插入" onclick="insert()"/>
+	<script type="text/javascript">
+		function insert(){
+			var li=document.createElement("li");
+			var txt=document.getElementById("new").value; //获取文本框内容
+			var thing=document.createTextNode(txt);
+			li.appendChild(thing);
+			var lis=document.getElementById("list");
+			lis.appendChild(li);
+		}
+	</script>
+</body>
+</html>

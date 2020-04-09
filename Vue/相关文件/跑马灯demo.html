@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<button type="button" v-on:click="go">动起来</button>
+		<button type="button" v-on:click="stop">快停下</button>
+		<p v>{{msg}}</p>
+	</div>
+	<script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
+    <script type="text/javascript">	
+    	var vm=new Vue({
+    		el:"#app",
+    		data:{
+    			msg:"vue的跑马灯demo,这是第一个demo。",
+    			setI:"setInterval"
+    		},
+    		methods:{
+    			go:function(){
+    				//点击后立即执行第一个字去最后面
+    				var start=this.msg.substring(0,1);
+    				//substring()不写后面的数就表示到结尾
+    				var end=this.msg.substring(1);
+    				this.msg=end+start;
+    				//每次点击都会清理之前的定时器
+    				clearInterval(this.setI);
+    				//设定定时器，一直执行
+    				//这里用到箭头函数，作用是使函数内的this同函数外的this一样指向vm 
+    				this.setI= setInterval(()=>{
+    				start=this.msg.substring(0,1);
+    				end=this.msg.substring(1);
+    				this.msg=end+start
+    				},1000)
+    				
+    			},
+    			stop:function(){
+    				clearInterval(this.setI)
+    			}
+    		}
+    	})
+    </script>	
+</body>
+</html>

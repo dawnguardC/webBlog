@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var cookieUnit={
+			set:function(name,value,day){
+				var username=encodeURIComponent(name);
+				var value=encodeURIComponent(value);
+				var date=new Date();
+				date.setHours(date.getHours()+(day*24-8));
+				document.cookie=username+"="+value+"; expires="+date;
+			},
+			get:function(name){
+				var nameStartIndex=document.cookie.indexOf(encodeURIComponent(name));
+				if (nameStartIndex!=-1) {
+					var nameEndIndex=document.cookie.indexOf(";",nameStartIndex);
+					if (nameEndIndex!=-1) {
+						return decodeURIComponent(document.cookie.substring(nameStartIndex+name.length+1,nameEndIndex-1))
+					}else{
+						return decodeURIComponent(document.cookie.substring(nameStartIndex+name.length+1,document.cookie.length))
+					}
+				}else{
+					alert("不存在这个cookie")
+				}
+			},
+			remove:function(name){
+				this.set(name,"",0)
+			}
+		};
+		cookieUnit.set("name","小明",3);
+		// console.log(document.cookie);
+		// console.log(cookieUnit.get("name"));
+		cookieUnit.remove("name");
+		console.log(document.cookie)
+</script>
+</body>
+</html>

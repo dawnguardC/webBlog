@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>jQuary</title>
+    <script type="text/javascript" src="jquery-1.12.0.min.js"></script>
+    <script type="text/javascript">
+    	$(function(){
+    		$("#input1").click(function(){
+    			var a=$("#div1").html();
+    			alert(a)
+    		});   		
+    	    $("#input2").click(function(){
+    		    var a=$("#div1").text();
+    		    alert(a)
+    		});    		
+    	})
+    </script>
+</head>
+<body>
+	<div id=div1>
+		<p id=p1>div标签内的p标签内容</p>
+	</div><br>
+	html获取p标签内的内容：<input type="button" id="input1" value="点击"><br>
+	text获取p标签内的内容：<input type="button" id="input2" value="点击">
+</body>
+</html>
